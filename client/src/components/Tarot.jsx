@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import shuffle from "lodash.shuffle";
 import { useAuth0 } from "@auth0/auth0-react";
 import useAddTarotHistory from "../hooks/useAddTarotHistory";
 import useGpt from "../hooks/useGPT";
 import "../style/tarot.css";
-import { tarotCards } from "./TarotCards"; // Assuming this file contains tarotCards data
-
-const shuffledCards = shuffle(tarotCards);
+import { tarotCards as initialTarotCards } from "./TarotCards"; // Assuming this file contains tarotCards data
 
 export default function Tarot() {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -14,15 +12,22 @@ export default function Tarot() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [question, setQuestion] = useState(""); // Added state to handle the question
   const [guestMessage, setGuestMessage] = useState(""); // Added state for guest message
+  const [userInfo, setUserInfo] = useState({}); // Added state to store user info separately
+  const [tarotCards, setTarotCards] = useState([]);
+
   const addTarotHistory = useAddTarotHistory();
   const { gptResponse, loading, error, callGpt } = useGpt();
+
+  useEffect(() => {
+    setTarotCards(shuffle(initialTarotCards));
+  }, []);
 
   async function flipCard(index) {
     // If there is already a card flipped and not the same one, do nothing
     if (opened.length > 0) return;
 
     const isReversed = Math.random() <= 0.5;
-    const selected = { ...shuffledCards[index], reversed: isReversed };
+    const selected = { ...tarotCards[index], reversed: isReversed };
     setOpened([index]);
     setSelectedCard(selected);
 
@@ -39,7 +44,7 @@ export default function Tarot() {
         }).then((res) => res.json());
 
         const { name, gender, astrologicalSign } = userProfile;
-        setSelectedCard({ ...selected, name, gender, astrologicalSign });
+        setUserInfo({ name, gender, astrologicalSign });
       } catch (error) {
         console.error("Failed to add tarot history:", error);
       }
@@ -51,7 +56,7 @@ export default function Tarot() {
       setGuestMessage("Please register or log in to ask the Tarot Master.");
       return;
     }
-    const { name, gender, astrologicalSign } = selectedCard;
+    const { name, gender, astrologicalSign } = userInfo;
     const dateToday = new Date().toLocaleDateString("en-CA");
     const card = selectedCard.name;
     const position = selectedCard.reversed ? "reversed" : "upright";
@@ -106,7 +111,7 @@ export default function Tarot() {
         )}
       </div>
       <div className="cards">
-        {shuffledCards.map((card, index) => {
+        {tarotCards.map((card, index) => {
           const isFlipped = opened.includes(index);
           return (
             <TarotCard
