@@ -215,6 +215,7 @@ app.put("/comments/:id", requireAuth, async (req, res) => {
     const updatedComment = await prisma.comments.update({
       where: { id: parseInt(id) },
       data: { content },
+      include: { user: true }, // Ensure user data is included
     });
 
     res.json(updatedComment);
