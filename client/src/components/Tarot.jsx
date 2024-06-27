@@ -136,7 +136,7 @@ export function TarotCard({ index, card, isFlipped, flipCard }) {
         </div>
         <div className="back">
           <img
-            src="https://res.cloudinary.com/dfib0veoq/image/upload/v1719443550/6ebd8b4b03fcd35c05b49ca0d3dfe85c_vj9tlh.png"
+            src="https://res.cloudinary.com/dfib0veoq/image/upload/v1719488118/664e5a7237f31b92523615a0094540e4_720_j7etgr.jpg"
             alt="Card Back"
           />
         </div>

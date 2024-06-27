@@ -21,5 +21,5 @@ export const tarotCards = [
   { id: "020", name: "The Sun", meaning: "Success, happiness, all will be well", reversedMeaning: "Negativity, depression, sadness" },
   { id: "021", name: "Judgement", meaning: "Reflection, reckoning, awakening", reversedMeaning: "Lack of self-awareness, doubt, self-loathing" },
   { id: "022", name: "The World", meaning: "Fulfillment, harmony, completion", reversedMeaning: "Incompletion, no closure, incomplete goals" },
-  // Add more cards as needed
+
 ];

@@ -78,11 +78,6 @@ body {
   background-color: #00b38f;
 }
 
-.menu-list li a:hover,
-.menu-list li .exit-button:hover {
-  transform: scale(1.05);
-}
-
 .menu-list li a:hover {
   background-color: #009e7a;
 }
@@ -95,6 +90,7 @@ body {
 
 .menu-list li .exit-button:hover {
   background-color: #ff4b4b;
+  transform: scale(1.05);
 }
 
 .loading {
