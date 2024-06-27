@@ -170,7 +170,7 @@ app.post("/comments", requireAuth, async (req, res) => {
   const { content } = req.body;
 
   if (!content) {
-    res.status(400).send("content is required");
+    res.status(400).send("Content is required");
   } else {
     try {
       const user = await prisma.user.findUnique({
@@ -183,6 +183,9 @@ app.post("/comments", requireAuth, async (req, res) => {
         data: {
           content,
           user: { connect: { id: user.id } },
+        },
+        include: {
+          user: true,
         },
       });
 
