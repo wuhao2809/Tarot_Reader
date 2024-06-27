@@ -150,7 +150,7 @@ app.delete("/tarothistory/:id", requireAuth, async (req, res) => {
 // Forum endpoints
 
 // Get comments for the authenticated user
-app.get("/comments", requireAuth, async (req, res) => {
+app.get("/comments", async (req, res) => {
   try {
     const comments = await prisma.comments.findMany({
       include: {
