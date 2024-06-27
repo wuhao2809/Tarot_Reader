@@ -13,9 +13,30 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model TarotHistory {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  tarot     String   @db.VarChar(255)
+  question  String?
+  user    User     @relation(fields: [userId], references: [id])
+  userId  Int
+}
+
+model Comments {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  content   String   @db.VarChar(255)
+  user    User     @relation(fields: [userId], references: [id])
+  userId  Int
+}
+
 model User {
   id           Int      @id @default(autoincrement())
   email        String   @unique
   auth0Id      String   @unique @default("")
   name         String?
+  astrologicalSign String?
+  Comments     Comments[]
+  TarotHistory TarotHistory[]
 }

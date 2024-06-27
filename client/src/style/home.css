@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Patrick+Hand&display=swap');
+
+body {
+  background: radial-gradient(circle, rgba(34, 193, 195, 1) 0%, rgba(45, 45, 74, 1) 100%);
+  font-family: 'Patrick Hand', sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.home-container {
+  background: rgba(45, 45, 74, 0.95);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  max-width: 450px;
+  width: 90%;
+  border: 2px solid #ffd700;
+  backdrop-filter: blur(10px);
+  transition: transform 0.2s;
+}
+
+.home-container:hover {
+  transform: scale(1.05);
+}
+
+h1 {
+  color: #ffd700;
+  font-size: 3em;
+  font-family: 'Cinzel', serif;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700;
+  }
+
+  to {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 20px #ffd700, 0 0 30px #ffd700, 0 0 40px #ffd700;
+  }
+}
+
+button {
+  width: calc(100% - 60px);
+  padding: 15px;
+  margin: 20px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.btn-primary {
+  background-color: #ff6347;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #e5533d;
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background-color: #4682b4;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #4169e1;
+  transform: scale(1.05);
+}

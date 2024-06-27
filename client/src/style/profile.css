@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Patrick+Hand&display=swap');
+
+body {
+    background: radial-gradient(circle, rgba(34, 193, 195, 1) 0%, rgba(45, 45, 74, 1) 100%);
+    color: #fff;
+    font-family: 'Patrick Hand', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgba(45, 45, 74, 0.85);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border: 2px solid #ffd700;
+    text-align: center;
+}
+
+.profile-container.guest {
+    text-align: center;
+}
+
+.profile-container.guest h2{
+    color: #ffd700;
+}
+
+.profile-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-info img {
+    border-radius: 50%;
+    margin-bottom: 15px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #ffd700;
+}
+
+.edit-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.edit-form input,
+.edit-form select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    font-family: 'Patrick Hand', sans-serif;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-group button {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-family: 'Patrick Hand', sans-serif;
+}
+
+.button-group button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.button-group button:hover:not(:disabled) {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+.edit-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 20px;
+    font-family: 'Patrick Hand', sans-serif;
+}
+
+.edit-button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .button-group {
+        flex-direction: column;
+    }
+
+    .button-group button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .edit-button {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        padding: 15px;
+    }
+
+    .profile-info img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .edit-form input,
+    .edit-form select {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .button-group button,
+    .edit-button {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
