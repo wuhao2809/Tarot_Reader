@@ -4,7 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import useAddTarotHistory from "../hooks/useAddTarotHistory";
 import useGpt from "../hooks/useGPT";
 import "../style/tarot.css";
-import { tarotCards as initialTarotCards } from "./TarotCards"; // Assuming this file contains tarotCards data
+import { tarotCards as initialTarotCards } from "./TarotCards";
 
 export default function Tarot() {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -19,15 +19,19 @@ export default function Tarot() {
   const { gptResponse, loading, error, callGpt } = useGpt();
 
   useEffect(() => {
-    setTarotCards(shuffle(initialTarotCards));
+    // Shuffle cards and assign reversed state
+    const shuffledCards = shuffle(initialTarotCards).map(card => ({
+      ...card,
+      reversed: Math.random() <= 0.5
+    }));
+    setTarotCards(shuffledCards);
   }, []);
 
   async function flipCard(index) {
     // If there is already a card flipped and not the same one, do nothing
     if (opened.length > 0) return;
 
-    const isReversed = Math.random() <= 0.5;
-    const selected = { ...tarotCards[index], reversed: isReversed };
+    const selected = tarotCards[index];
     setOpened([index]);
     setSelectedCard(selected);
 
@@ -131,13 +135,13 @@ export default function Tarot() {
 export function TarotCard({ index, card, isFlipped, flipCard }) {
   return (
     <button
-      className={`tarot-card ${isFlipped ? "flipped" : ""}`}
+      className={`tarot-card ${isFlipped ? "flipped" : ""} ${card.reversed ? "reversed" : ""}`}
       onClick={() => flipCard(index)}
       aria-label={`tarot-card-${card.name}`}
     >
       <div className="inner">
         <div className="front">
-          <p>{card.name}</p>
+          <img src={require(`../img/${card.id}.png`)} alt={card.name} />
         </div>
         <div className="back">
           <img

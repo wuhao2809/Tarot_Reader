@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Home from '../components/Home'; // Adjust the path based on your file structure
+import Home from '../components/Home'; 
 import { Auth0Context } from '@auth0/auth0-react';
-import { GuestProvider } from '../components/GuestContext'; // Adjust the path based on your file structure
+import { GuestProvider } from '../components/GuestContext'; 
 
 test('renders login button when not authenticated', () => {
   render(
