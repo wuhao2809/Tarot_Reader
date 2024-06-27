@@ -33,6 +33,10 @@ const openai = new OpenAI({
 });
 
 // Public endpoint
+app.get("", (req, res) => {
+  res.send("pong");
+});
+
 app.get("/ping", (req, res) => {
   res.send("pong");
 });
@@ -284,7 +288,7 @@ app.post("/verify-user", requireAuth, async (req, res) => {
   }
 });
 
-const PORT = parseInt(process.env.PORT) || 8000;
+const PORT = parseInt(process.env.PORT) || 8080;
 app.listen(PORT, () => {
  console.log(`Server running on http://localhost:${PORT} 🎉 🚀`);
 });
