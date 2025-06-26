@@ -56,7 +56,7 @@ h1 {
 }
 
 button {
-  width: calc(100% - 60px);
+  /* width: calc(100% - 60px); */
   padding: 15px;
   margin: 20px 0;
   border: none;
